@@ -26,13 +26,18 @@ date_format = DateFormatter("%b")
 food_df.set_index('Date', inplace=True, drop=True)
 print(food_df)
 
+#summary values
+print('Minimum Value: ' , food_df['Visits'].min() , 'visits on' , food_df['Visits'].idxmin().strftime("%a %d %b") +'.')
+print('Maximum Value: ' , food_df['Visits'].max() , 'visits on' , food_df['Visits'].idxmax().strftime("%a %d %b") +'.')
+print('Mean Value: ' , round(food_df['Visits'].mean()) , 'visits.')
 
 #plotting data
 
 #setting figures and axes
 fig, ax = plt.subplots()
 
-ax.xaxis.set_major_locator(mdates.MonthLocator(interval=1))   #give an x axis tick for every month
+ #give an x axis tick for every month
+ax.xaxis.set_major_locator(mdates.MonthLocator(interval=1))
 
 ax.plot(food_df.index, food_df['Visits'])
 
@@ -42,9 +47,11 @@ ax.set_xlabel('Date')
 ax.set_ylabel('No. of Visits Per Day')
 ax.set_title('Food Hygiene Ratings Website Visits (2018)')
 
+#2nd plot
+#ax.plot(food_df.index, food_df['Pageviews'])
+
 
 plt.show()
 
 #summary figures eg lowest day, avg etc
-
-#could plot several values on graph at once
+print('Minimum Value: ' + food_df.min())
