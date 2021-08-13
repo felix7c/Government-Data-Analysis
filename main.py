@@ -21,7 +21,6 @@ food_df['Date'] = food_df['Date'].apply(lambda olddate: datetime.strptime(olddat
 #set date format to be displayed on x axis
 date_format = DateFormatter("%b")
 
-
 #set date to the index
 food_df.set_index('Date', inplace=True, drop=True)
 print(food_df)
@@ -31,6 +30,9 @@ print('Minimum Value: ' , food_df['Visits'].min() , 'visits on' , food_df['Visit
 print('Maximum Value: ' , food_df['Visits'].max() , 'visits on' , food_df['Visits'].idxmax().strftime("%a %d %b") +'.')
 print('Mean Value: ' , round(food_df['Visits'].mean()) , 'visits.')
 
+print('Correlation between page visits, unique visitors and page views:')
+print(food_df.corr())
+print('Shows very high correlation between each variable.')
 #plotting data
 
 #setting figures and axes
@@ -47,11 +49,5 @@ ax.set_xlabel('Date')
 ax.set_ylabel('No. of Visits Per Day')
 ax.set_title('Food Hygiene Ratings Website Visits (2018)')
 
-#2nd plot
-#ax.plot(food_df.index, food_df['Pageviews'])
-
-
 plt.show()
 
-#summary figures eg lowest day, avg etc
-print('Minimum Value: ' + food_df.min())
